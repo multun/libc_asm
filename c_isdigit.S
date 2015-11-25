@@ -1,7 +1,7 @@
-	global  ft_isdigit
+	global  c_isdigit
 	;; extern  puts
 	section .text
-ft_isdigit:
+c_isdigit:
 	;; tests if char is a digit
 	;; char
 	;;  ->  used : /
@@ -9,8 +9,8 @@ ft_isdigit:
 	jg	isdigit_n
 	cmp	di, 0x30
 	jl	isdigit_n
-	mov	rax, 1
+	mov	al, 1
 	ret
 isdigit_n:
-	mov	rax, 0
+	mov	al, 0
 	ret	

@@ -1,10 +1,11 @@
-	global  ft_strcat
+	global  c_strcat
 	;; extern  puts
 	section .text
-ft_strcat:
+c_strcat:
 	;; concatenates 2 strings
 	;; *dest, *origin
-	;; -> 
+	;; ->
+	mov	rbx, rdi
 	xor	rcx, rcx
 	not	rcx		; set rcx to max value
 	mov	al, 0 		; byte to find
@@ -18,4 +19,5 @@ strcat_continue:
 	inc	rsi
 	inc	rdi
 	je	strcat_continue
+	mov	rax, rbx	; must return pointer to string
 	ret

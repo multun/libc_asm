@@ -1,7 +1,7 @@
-	global  ft_bzero
+	global  c_bzero
 	;; extern  puts
 	section .text
-ft_bzero:	
+c_bzero:	
 	mov	rcx, rsi ; rsi contains the number of bytes to init, and ecx is the rep counter
 	mov	rsi, rdi ; rdi contains a pointer to the block to init
 	mov	al, 0    ; al stores what to ini the momory with

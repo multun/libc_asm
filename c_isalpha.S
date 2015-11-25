@@ -1,7 +1,7 @@
-	global ft_isalpha
+	global c_isalpha
 	;; extern  puts
 	section .text
-ft_isalpha:
+c_isalpha:
 	;; tests if char is a letter
 	;; char
 	;;  ->  used : /

@@ -3,7 +3,7 @@
 
 #include <string.h>
 
-int ft_bzero(void*,size_t);
+int c_bzero(void*,size_t);
 
 
 int main()
@@ -15,7 +15,7 @@ int main()
     buffer[i] = 42;
 
 
-  ft_bzero(buffer,256);
+  c_bzero(buffer,256);
   
   for (i = 0;i<256;i++)
     {

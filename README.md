@@ -1,1 +1,1 @@
-just some asm code done for training purposes
+just some asm code written for training purposes
