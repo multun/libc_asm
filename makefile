@@ -36,7 +36,7 @@ debug: $(OBJ)
 build_tests: $(TBINS)
 
 tests: build_tests
-	@$(foreach x,$(TBINS),./$(x)${\n})
+	bash runtests.sh
 
 #$(EXEC): $(TEST_SRC) $(OBJ)
 #	@echo "Building the testing binary..."
