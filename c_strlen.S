@@ -1,7 +1,7 @@
-	global  c_strcat
+	global  c_strlen
 	;; extern  puts
 	section .text
-c_strcat:
+c_strlen:
 	;; concatenates 2 strings
 	;; *dest, *origin
 	;; ->
@@ -13,11 +13,8 @@ c_strcat:
 	repne scasb 		; find the first al byte starting from edi (dest string)
 	;; at that moment, edi is at the end of the string
 	;; esi is the begenning of the string to copy
-strcat_continue:
-	movsb 			; moves byte at rsi to rdi
-	cmp	byte [esi], 0
-	inc	rsi
-	inc	rdi
-	je	strcat_continue
-	mov	rax, r11	; must return pointer to string
+	mov rax, rcx
+	not rax
+	dec rax
+
 	ret

@@ -3,7 +3,7 @@ ASMFLAGS=-felf64
 ASMFLAGS_BUILD=-felf64
 
 TCC=gcc
-TCCFLAGS=
+TCCFLAGS=-O3
 
 #TEST_SRC=test.c
 #EXEC=ftest
@@ -44,11 +44,11 @@ tests: build_tests
 
 %.tbin: %.test.c %.o
 	@echo "Building $@ testing binary..."
-	@$(TCC) -o $@ $^ $(TCCFLAGS)
+	@$(TCC) -o $@ $^ `if [ -f $*.opts ]; then cat $*.opts;fi;` $(TCCFLAGS)
 
 %.o: %.S
 	@echo "Building $@..."
-	@$(LCC) -o $@ $< $(ASMFLAGS)
+	@$(LCC) -o $@ $<  $(ASMFLAGS)
 
 
 #.phony reconstruit toujours ses dépendances

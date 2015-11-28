@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 for i in *.test.c; do
     if [ -f "./${i%.*.*}.tbin" ]; then
-	printf "Testing %10s " "${i%.*.*}"
+	printf "Testing %14s " "${i%.*.*}"
         ./${i%.*.*}.tbin
 	status=$?
 	if [ $status -ne 0 ]; then
@@ -18,7 +18,7 @@ for i in *.test.c; do
 done
 echo
 for i in *.S; do
-    if [ ! -f "./${i%.*}.test.c" ]; then
+    if [ ! -f "./${i%.*}.test.c" ] && [ ! -f "disabled_tests/${i%.*}.test.c" ]; then
 	echo "missing test file for $i"
     fi
 done
