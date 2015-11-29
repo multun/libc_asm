@@ -10,8 +10,34 @@
 
 	;; it's actually an asm implementation of this algorith :
 	;;  http://en.literateprograms.org/Ackermann_function_%28C%29#Partially_iterative
-	;; with optimized stack operations
 	
+	;; with optimized stack operations
+
+	;; here are some benchmarks for ackermann(4,1), compiled with gcc without options:
+
+	;; A naive implementation of ackermann gives that result :
+	;; ± >$ time ./ackermanntest 
+
+	;; real	0m18.077s
+	;; user	0m18.084s
+	;; sys	0m0.000s
+
+	
+	;; A semi-iterative copied from there http://en.literateprograms.org/Ackermann_function_%28C%29#Partially_iterative gives :
+	;; ± >$ time ./ackermanntest2
+
+	;; real	0m5.622s
+	;; user	0m5.624s
+	;; sys	0m0.000s
+
+	;; however, when compiled with -O3, dark magic happends and it goes down to 1.45 seconds. which beats my algorithm.. I feel like it creates another path for the part just after the c_ackermann_s label.
+
+	;; my implementation gives :
+	;; ± >$ time ./c_ackermann.tbin
+
+	;; real	0m1.625s
+	;; user	0m1.624s
+	;; sys	0m0.000s
 c_ackermann:
 	mov rcx,1 		; rcx is the depth counter
 c_ackermann_s:
@@ -41,3 +67,9 @@ ack_endcond:
 end:
 	mov rax, rsi
 	ret
+
+	;; lets conclude:
+	;;  don't try to optimize an algorithm yourself
+	;; unless you wan't to use a specific instrution set
+	;; or you're an expert at it. An hardcode expert.
+	;; And I'm not :'(
