@@ -2,20 +2,18 @@
 	;; extern  puts
 	section .text
 
-	;; this is a semi-iterative ackermann
-	;; doing a hashtable in asm is a bit too hardcore for me,
-	;; plus this piece of code is sexy enough for me to be satisfied
+	;; this is a semi-iterative ackermann, or even iterative if you take in account the fact I added a counter not to use calls
 
 	;; you could make a bit faster by using 32 bits registers instead of 64bits one
 
-	;; it's prety fast already because it pushed a single register on each additionnal depth gained
+	;; it's prety fast already because it pushes a single register on each additionnal depth gained
 
 	;; it's actually an asm implementation of this algorith :
 	;;  http://en.literateprograms.org/Ackermann_function_%28C%29#Partially_iterative
 	;; with optimized stack operations
 	
 c_ackermann:
-	mov rcx,1 		; r11 is the depth counter
+	mov rcx,1 		; rcx is the depth counter
 c_ackermann_s:
 	cmp rsi, 0		; if (n == 0)
 	jne ack_nd0		;     goto ack_nd0
